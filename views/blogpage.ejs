@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>blogPage - SignUp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <script
+        type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <link href="//fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i" rel="stylesheet">
+    <link rel="icon" href="../images/boat.png" type="image/x-icon">
+    <style>
+        .container-fluid {
+            padding-right: 0px;
+            padding-left: 0px;
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        body {
+            overflow-x: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+            <a class="navbar-brand" href="/create" style="color:rgb(95, 185, 130); font-size: 30px;"><strong>Blog
+                    for Inspiration </strong></a>
+            <a class="nav-link" href="/logout"
+                style="color:rgb(95, 185, 130); font-size: 15px;float:right;padding-left: 1000px; ">Logout</a>
+
+        </nav>
+        <!-- <a class="navbar-brand" href="/create" style="color:rgb(95, 185, 130); font-size: 30px;"><strong>Blog
+                for Inspiration </strong></a>
+        <a class="nav-link" href="/logout" style="color:rgb(95, 185, 130); font-size: 15px;float:right;">Logout</a> -->
+
+        <div>
+            <h3>Hello,<strong style="color:rgb(95, 185, 130);font-size: 20px;"><%= username %></strong></h3>
+
+            <p><i>Hope you are doing well.</i></p>
+        </div>
+
+
+
+        <div class="main-w3layouts wrapper" style="padding-top: 0%">
+            <div class="main-agileinfo" id="just">
+                <%if (data.length > 0) { %>
+                <div class="col-md-9" method="GET" action='/create'>
+                    <% for(var i=0; i < data.length; i++) { %>
+                    <div class="card border-success mb-3">
+                        <h6><%= data[i].username %></h6>
+                        <label><%= data[i].title %></label>
+                        <p><%= data[i].description %></p>
+                        <%if(data[i].username ==  username ){ %>
+                        <label><%= data[i].created_on %><a href='/delete/<%= data[i].id %>'><strong
+                                    style="color: rgb(95, 185, 130); text-align:end;">delete</strong></a></label>
+                        <% } %>
+                    </div>
+                    <% } %>
+                </div>
+                <% } %>
+                <div class="col-md-9">
+                    <label>Write you blog here..!!</label>
+                    <form method="POST" action="/create">
+                        <input class="text" type="text" name="title" placeholder="title" required>
+                        <label for="comment" style="font-size: 25px; font-style:oblique"></label>
+                        <textarea class="form-control" name="description" rows="5" spellcheck="false"
+                            style="border: 2px solid blueviolet;" required></textarea>
+                        <br>
+                        <button id="post">post</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <script type="text/javascript" src="../js/script.js"></script>
+</body>
+
+</html>

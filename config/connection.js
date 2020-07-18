@@ -9,7 +9,8 @@ mongoose.connect(URL, {
     useFindAndModify: false,
     useUnifiedTopology: true
 });
-var User = require('../models/user')
+var User = require('../models/user');
+var Blog = require('../models/blog');
 var db = mongoose.connection;
 
 //We enebled the Listener
@@ -21,3 +22,4 @@ db.on('open', () => {
     console.log('DB Connection established successfully');
 });
 module.exports = User;
+module.exports = Blog;
